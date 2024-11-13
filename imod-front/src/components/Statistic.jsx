@@ -1,20 +1,23 @@
 import React, { useEffect, useRef } from 'react';
+import product from '../assets/product.svg';
+import worker from '../assets/worker.svg';
+import clients from '../assets/clients.svg';
 import img from '../assets/stats.jpg';
 
 // Sample statistics data
 const statisticsData = [
   {
-    icon: '😘😘',
+    icon: clients,
     title: 'Наши клиенты',
     value: 300,
   },
   {
-    icon: '😂😂',
+    icon: product,
     title: 'Наши продукты',
     value: 50,
   },
   {
-    icon: '😊',
+    icon: worker,
     title: 'Число сотрудников',
     value: 500,
   },

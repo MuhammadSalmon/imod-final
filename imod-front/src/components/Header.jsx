@@ -69,7 +69,7 @@ const Header = ({handleChangeLanguage, language}) => {
                 </a>
               </div>
               <div className="border-l-2 border-gray-300 pl-4 flex flex-col">
-                <span className="font-semibold text-gray-700">ПН - ПТ:</span>
+                <span className="font-semibold text-gray-700">{t('work_days')}:</span>
                 <span className="text-black font-medium">08:00 - 18:00</span>
               </div>
               <div className="flex flex-col">
@@ -107,7 +107,7 @@ const Header = ({handleChangeLanguage, language}) => {
           onChange={handleChangeLanguage}
           className="mx-auto bg-white border border-gray-300 rounded-md px-2 py-1"
         >
-          <option value="tg">Таджикский</option>
+          <option value="tg">Точики</option>
           <option value="ru">Русский</option>
           <option value="en">English</option>
         </select>
@@ -190,32 +190,32 @@ const Header = ({handleChangeLanguage, language}) => {
           <ul className="flex flex-col items-center space-y-4 py-4 text-lg">
             <li>
               <Link to="/" className={`hover:text-blue-500 ${isActive('/') ? 'bg-blue-100 px-3 py-1 rounded-md' : ''}`} onClick={toggleMobileMenu}>
-                Главное
+                {t('main')}
               </Link>
             </li>
             <li>
               <Link to="/news" className={`hover:text-blue-500 ${isActive('/news') ? 'bg-blue-100 px-3 py-1 rounded-md' : ''}`} onClick={toggleMobileMenu}>
-                Новости
+              {t('news')}
               </Link>
             </li>
             <li>
               <Link to="/history" className={`hover:text-blue-500 ${isActive('/history') ? 'bg-blue-100 px-3 py-1 rounded-md' : ''}`} onClick={toggleMobileMenu}>
-                История
+              {t('history')}
               </Link>
             </li>
             <li>
               <Link to="/gallery" className={`hover:text-blue-500 ${isActive('/gallery') ? 'bg-blue-100 px-3 py-1 rounded-md' : ''}`} onClick={toggleMobileMenu}>
-                Галерея
+              {t('galery')}
               </Link>
             </li>
             <li>
               <Link to="/products" className={`hover:text-blue-500 ${isActive('/products') ? 'bg-blue-100 px-3 py-1 rounded-md' : ''}`} onClick={toggleMobileMenu}>
-                Продукты
+              {t('products')}
               </Link>
             </li>
             <li>
               <Link to="/vacancy" className={`hover:text-blue-500 ${isActive('/vacancy') ? 'bg-blue-100 px-3 py-1 rounded-md' : ''}`} onClick={toggleMobileMenu}>
-                Вакансии
+              {t('vacancies')}
               </Link>
             </li>
             

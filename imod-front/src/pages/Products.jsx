@@ -4,11 +4,15 @@ import ProductItem from './Product_Item';
 import LoadingSpinner from '../components/Spinner';
 import { useFetchProducts, useFetchCategories } from '../api';
 import ProductItemPage from './ProductPage';
+
 const ProductPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(0); // Default to "All" category with ID 0
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [lastVisitedPage, setLastVisitedPage] = useState(1); // To track the last visited page for "All"
+  const itemsPerPage = 10;
 
-  // Получит апи
+  // Fetch API data
   const fetchCategories = useFetchCategories();
 
   const {
@@ -22,20 +26,39 @@ const ProductPage = () => {
       return [{ id: 0, name: 'Все' }, ...data];
     },
   });
-  
+
   const {
     data: products = [],
     isLoading: productsLoading,
     error: productsError,
-  } = useFetchProducts()
-console.log(products)
+  } = useFetchProducts();
+
+  console.log(products);
+
   // Filter products based on selected category ID
   const filteredProducts = selectedCategory === 0
     ? products
     : products.filter((product) => product.category === selectedCategory);
 
+  // Calculate the products to display based on pagination
+  const indexOfLastProduct = currentPage * itemsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
   const openModal = (product) => setSelectedProduct(product);
   const closeModal = () => setSelectedProduct(null);
+
+  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleCategoryChange = (categoryId) => {
+    if (categoryId === 0) {
+      setCurrentPage(lastVisitedPage); // Restore last page for "All" category
+    } else {
+      setCurrentPage(1); // Reset to the first page for specific categories
+    }
+    setSelectedCategory(categoryId);
+  };
 
   if (categoriesLoading || productsLoading) {
     return (
@@ -55,7 +78,7 @@ console.log(products)
       <div className="w-full flex justify-center mb-8">
         <select
           value={selectedCategory}
-          onChange={(e) => setSelectedCategory(Number(e.target.value))}
+          onChange={(e) => handleCategoryChange(Number(e.target.value))}
           className="p-2 border rounded-md text-gray-700 focus:outline-none focus:border-blue-500"
         >
           {categories.map((category) => (
@@ -68,7 +91,7 @@ console.log(products)
 
       {/* Products Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {filteredProducts.map((product) => (
+        {currentProducts.map((product) => (
           <ProductItem
             key={product.id}
             product={product}
@@ -76,6 +99,28 @@ console.log(products)
           />
         ))}
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-6">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                handlePageChange(index + 1);
+                if (selectedCategory === 0) {
+                  setLastVisitedPage(index + 1); // Update last visited page for "All"
+                }
+              }}
+              className={`px-4 py-2 mx-1 rounded-md ${
+                currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-200'
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Modal */}
       {/* {selectedProduct && (

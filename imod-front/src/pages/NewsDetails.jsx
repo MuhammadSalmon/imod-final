@@ -45,32 +45,32 @@ const NewsDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header with first image and title/description */}
-      <header
-        className="relative h-[40vh] md:h-[60vh] bg-cover bg-center flex items-center justify-center"
+      {/* Header Image */}
+      <div
+        className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] bg-cover bg-center"
         style={{ backgroundImage: `url(${newsItem.images[0]?.image})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative text-center text-white z-10 px-4">
-          <h1 className="text-2xl md:text-4xl font-bold mb-4">{newsItem.title}</h1>
-          <p className="text-sm md:text-lg mb-4">
-            By {newsItem.author} | {new Date(newsItem.custom_date).toLocaleDateString()}
-          </p>
-          <p className="text-xs md:text-md max-w-2xl mx-auto">{newsItem.content}</p>
-        </div>
-      </header>
+      </div>
 
-      {/* Main content with full article text */}
+      {/* Title and Description */}
+      <div className="relative text-center z-10 p-4 sm:p-6 md:p-8 w-full max-w-xl lg:max-w-[90vw] mx-auto bg-white mt-4 rounded-lg shadow-lg">
+        <h1 className="text-xl sm:text-2xl md:text-4xl font-bold mb-2 text-gray-800">{newsItem.title}</h1>
+        <p className="text-xs sm:text-sm md:text-lg mb-2 text-gray-600">
+          {new Date(newsItem.custom_date).toLocaleDateString()}
+        </p>
+        <p className="text-sm sm:text-base md:text-lg text-justify text-gray-700">{newsItem.content}</p>
+      </div>
+
+      {/* Image Grid */}
       <div className="container mx-auto p-4 md:p-8">
-        
-        {/* Image Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 mt-6">
           {newsItem.images.map((photo, index) => (
             <img
               key={index}
               src={photo.image}
               alt={`Gallery Image ${index + 1}`}
-              className="w-full h-48 sm:h-64 object-cover rounded shadow-lg cursor-pointer hover:opacity-75 transition-opacity transform hover:scale-105 duration-300"
+              className="w-full h-32 sm:h-48 md:h-64 object-cover rounded shadow-lg cursor-pointer hover:opacity-75 transition-opacity transform hover:scale-105 duration-300"
               onClick={() => openModal(index)}
               onLoad={() => setLoading(false)}
               onError={() => setLoading(false)}
@@ -89,32 +89,33 @@ const NewsDetails = () => {
         {isOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4 transition-opacity duration-300">
             <button
-              className="absolute top-4 right-4 text-white text-2xl md:text-3xl font-bold"
+              className="absolute top-4 right-4 text-white text-2xl sm:text-3xl font-bold"
               onClick={closeModal}
             >
               &times;
             </button>
 
             <button
-              className="absolute z-40 left-4 text-white text-2xl md:text-3xl font-bold"
+              className="absolute z-40 left-4 text-white text-2xl sm:text-3xl font-bold"
               onClick={goToPrevious}
             >
               &#10094;
             </button>
 
             <div
-              className={`relative w-full max-w-2xl md:max-w-4xl max-h-full flex items-center justify-center transition-transform duration-300 ${
+              className={`relative w-full max-w-xs sm:max-w-md md:max-w-3xl max-h-full flex items-center justify-center transition-transform duration-300 ${
                 animateModal ? 'scale-100 opacity-100' : 'scale-75 opacity-0'
               }`}
             >
               <img
                 src={newsItem.images[currentIndex].image}
                 className="w-full h-auto max-h-screen object-contain rounded-lg shadow-lg"
+                alt={`Modal Image ${currentIndex + 1}`}
               />
             </div>
 
             <button
-              className="absolute right-4 text-white text-2xl md:text-3xl font-bold"
+              className="absolute right-4 text-white text-2xl sm:text-3xl font-bold"
               onClick={goToNext}
             >
               &#10095;

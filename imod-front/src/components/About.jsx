@@ -4,7 +4,7 @@ import AnimatedLink from './Button';
 
 const AboutSection = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center h-auto lg:h-[70vh] w-[95vw] md:w-[90vw] lg:w-[80vw] mx-auto my-7 border border-gray-700 rounded-md overflow-hidden">
+    <div className="flex flex-col lg:flex-row justify-center items-center h-auto lg:h-[80vh] w-[95vw] md:w-[90vw] lg:w-[80vw] mx-auto my-7 border border-gray-700 rounded-md overflow-hidden">
       
       {/* Left Side - Text Content */}
       <div
