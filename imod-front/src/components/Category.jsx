@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useFetchProducts } from '../api';
 import LoadingSpinner from './Spinner';
+import { useTranslation } from 'react-i18next';
 
 // Example category data
 
 
 const CategoryPage = () => {
-  
+  const { i18n, t } = useTranslation();
   const {data: products = [],
     isLoading: productsLoading,
     error: productsError,} = useFetchProducts();
@@ -59,7 +60,7 @@ const CategoryPage = () => {
       </div> */}
 
       {/* Popular Products Section */}
-      <h2 className="text-3xl font-bold text-center mb-10">Лучшие продукты</h2>
+      <h2 className="text-3xl font-bold text-center mb-10">{t("pop_product")}</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (

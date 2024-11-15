@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
-const AnimatedLink = ({link}) => (
+const AnimatedLink = ({link}) => {
+  const { i18n, t } = useTranslation();
+  
+  return(
   <motion.div
     whileHover={{ scale: 1.05 }} // Slight scaling on hover
     whileTap={{ scale: 0.95 }} // Slight press-down effect on tap
@@ -17,9 +21,10 @@ const AnimatedLink = ({link}) => (
       onMouseEnter={(e) => (e.currentTarget.style.backgroundPosition = "100% 0")}
       onMouseLeave={(e) => (e.currentTarget.style.backgroundPosition = "0 0")}
     >
-      Начать
+      {t('button')}
     </Link>
   </motion.div>
-);
+)
+};
 
 export default AnimatedLink;

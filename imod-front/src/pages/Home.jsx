@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import img1 from '../assets/img1.jpg';
 import img2 from '../assets/img2.jpg';
 import img3 from '../assets/img3.jpg';
-import Services from '../components/Services'
 import BannerSection from '../components/BannerSection';
 import './Home.css'; // Custom CSS for the component
 import HeroSection from '../components/Hero';
@@ -40,7 +39,6 @@ const Slideshow = () => {
       <Statistics />
       <CategoryPage />
       <Partners />
-      <Services />
     </>
   );
 };

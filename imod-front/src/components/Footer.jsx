@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 px-4">
         {/* Company Information */}
         <div className="w-full md:w-1/3 text-center md:text-left">
-          <h2 className="text-xl font-semibold">ИмодЗавод</h2>
+          <h2 className="text-xl font-semibold">Имод</h2>
           <p className="text-sm mt-2 text-gray-400">
             Производственное предприятие электрооборудования.
           </p>
@@ -14,7 +14,7 @@ const Footer = () => {
             Адрес: г. Душанбе, район Сино, Таджикистан
           </p>
           <p className="text-sm mt-2 text-gray-400">Телефон: +992 123 456 789</p>
-          <p className="text-sm mt-2 text-gray-400">Email: info@imodzavod.tj</p>
+          <p className="text-sm mt-2 text-gray-400">Email: info@imod.tj</p>
         </div>
 
         {/* Quick Links */}
@@ -37,8 +37,8 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/contact" className="text-gray-400 hover:text-white transition-colors">
-                Контакты
+              <a href="/vacancies" className="text-gray-400 hover:text-white transition-colors">
+                Вакансии
               </a>
             </li>
           </ul>

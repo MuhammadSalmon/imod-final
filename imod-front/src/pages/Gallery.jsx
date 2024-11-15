@@ -1,35 +1,40 @@
-import img from '../assets/img1.jpg';
-import img2 from '../assets/img2.jpg';
-import img3 from '../assets/img3.jpg';
-import React, { useState } from 'react';
-import LoadingSpinner from '../components/Spinner'; // Import your loading spinner
+import React, { useState } from "react";
+import img from "../assets/img1.jpg";
+import img2 from "../assets/img2.jpg";
+import img3 from "../assets/img3.jpg";
+import img4 from "../assets/news2_1.jpg";
+import img5 from "../assets/news2_2.jpg";
+import img6 from "../assets/news2_3.jpg";
+import LoadingSpinner from "../components/Spinner"; // Import your loading spinner
 
 const photos = [
-  { src: img, alt: 'Image 1' },
-  { src: img2, alt: 'Image 2' },
-  { src: img3, alt: 'Image 3' },
-  { src: img2, alt: 'Image 4' },
-  { src: img, alt: 'Image 5' },
-  { src: img2, alt: 'Image 6' },
-  { src: img3, alt: 'Image 7' },
-  { src: img2, alt: 'Image 8' },
+  { src: img, alt: "Image 1" },
+  { src: img2, alt: "Image 2" },
+  { src: img3, alt: "Image 3" },
+  { src: img2, alt: "Image 4" },
+  { src: img4, alt: "Image 5" },
+  { src: img5, alt: "Image 6" },
+  { src: img6, alt: "Image 7" },
+  { src: img, alt: "Image 8" },
 ];
 
 const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animateModal, setAnimateModal] = useState(false);
-  const [loading, setLoading] = useState(true); // State to track loading
+  const [loading, setLoading] = useState(true);
+  const [flexValue, setFlexValue] = useState("w-full");
+  const [activeButton, setActiveButton] = useState(1); // Active button state
 
   const openModal = (index) => {
     setCurrentIndex(index);
     setIsOpen(true);
-    setTimeout(() => setAnimateModal(true), 50); // Add slight delay to trigger animation
+    setTimeout(() => setAnimateModal(true), 50);
   };
 
   const closeModal = () => {
     setAnimateModal(false);
-    setTimeout(() => setIsOpen(false), 200); // Wait for animation to complete before closing
+    setTimeout(() => setIsOpen(false), 200);
   };
 
   const goToPrevious = () => {
@@ -44,29 +49,72 @@ const Gallery = () => {
     );
   };
 
+  const handleFlexChange = (value, buttonIndex) => {
+    setFlexValue(value);
+    setActiveButton(buttonIndex);
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-3xl font-bold text-center mb-6">Gallery</h2>
 
+      {/* Layout Control Buttons */}
+      <div className="flex justify-center gap-4 mb-4">
+        <button
+          onClick={() => handleFlexChange("w-full", 1)}
+          className={`px-4 py-2 rounded-md hover:bg-slate-600 transition ${
+            activeButton === 1
+              ? "bg-blue-500 text-white"
+              : "bg-blue-950 text-white"
+          }`}
+        >
+          1
+        </button>
+        <button
+          onClick={() => handleFlexChange("w-1/2", 2)}
+          className={`px-4 py-2 rounded-md hover:bg-slate-600 transition ${
+            activeButton === 2
+              ? "bg-blue-500 text-white"
+              : "bg-blue-950 text-white"
+          }`}
+        >
+          2
+        </button>
+        <button
+          onClick={() => handleFlexChange("w-1/3", 3)}
+          className={`px-4 py-2 rounded-md hover:bg-slate-600 transition ${
+            activeButton === 3
+              ? "bg-blue-500 text-white"
+              : "bg-blue-950 text-white"
+          }`}
+        >
+          4
+        </button>
+      </div>
+
       {/* Image Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="flex flex-wrap">
         {photos.map((photo, index) => (
-          <img
+          <div
             key={index}
-            src={photo.src}
-            alt={photo.alt}
-            className="w-full h-auto rounded shadow-lg cursor-pointer hover:opacity-75 transition-opacity"
+            className={`p-2 ${flexValue}`}
             onClick={() => openModal(index)}
-            onLoad={() => setLoading(false)} // Set loading to false when image loads
-            onError={() => setLoading(false)} // Set loading to false if there's an error
-          />
+          >
+            <img
+              src={photo.src}
+              alt={photo.alt}
+              className="w-full h-auto rounded shadow-lg cursor-pointer hover:opacity-75 transition-opacity"
+              onLoad={() => setLoading(false)}
+              onError={() => setLoading(false)}
+            />
+          </div>
         ))}
       </div>
 
       {/* Loading Spinner */}
       {loading && (
         <div className="flex items-center justify-center my-4">
-          <LoadingSpinner /> {/* Show loading spinner */}
+          <LoadingSpinner />
         </div>
       )}
 
@@ -81,7 +129,7 @@ const Gallery = () => {
           </button>
 
           <button
-            className="absolute left-4 text-white text-3xl font-bold"
+            className="absolute z-50 left-4 text-white text-3xl font-bold"
             onClick={goToPrevious}
           >
             &#10094;
@@ -89,7 +137,7 @@ const Gallery = () => {
 
           <div
             className={`relative max-w-4xl max-h-full flex items-center justify-center transition-transform duration-300 ${
-              animateModal ? 'scale-100 opacity-100' : 'scale-75 opacity-0'
+              animateModal ? "scale-100 opacity-100" : "scale-75 opacity-0"
             }`}
           >
             <img

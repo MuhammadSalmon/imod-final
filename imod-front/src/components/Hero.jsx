@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import AnimatedLink from './Button';
 import { useFetchNews } from '../api';
+import LoadingSpinner from './Spinner';
 
 const HeroSection = () => {
   const [showText, setShowText] = useState(false);
@@ -35,6 +36,16 @@ const HeroSection = () => {
     arrows: false,
   };
 
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <LoadingSpinner />
+      </div>
+    );
+
+  if (error) return <div className="text-center text-red-600">News item not found</div>;
+
+
   return (
     <Slider {...settings}>
       {news.map((item, index) => (
@@ -44,6 +55,7 @@ const HeroSection = () => {
             style={{
               backgroundImage: `url(${item.images[0]?.image})`,
               backgroundRepeat: 'no-repeat',
+              height: '60vh'
             }}
           >
             <div className="absolute inset-0 bg-black opacity-50"></div>

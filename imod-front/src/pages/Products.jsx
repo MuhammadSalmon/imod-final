@@ -4,6 +4,7 @@ import ProductItem from './Product_Item';
 import LoadingSpinner from '../components/Spinner';
 import { useFetchProducts, useFetchCategories } from '../api';
 import ProductItemPage from './ProductPage';
+import { useTranslation } from 'react-i18next';
 
 const ProductPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(0); // Default to "All" category with ID 0
@@ -12,7 +13,7 @@ const ProductPage = () => {
   const [lastVisitedPage, setLastVisitedPage] = useState(1); // To track the last visited page for "All"
   const itemsPerPage = 10;
 
-  // Fetch API data
+  const { i18n, t } = useTranslation();
   const fetchCategories = useFetchCategories();
 
   const {
@@ -74,6 +75,7 @@ const ProductPage = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <h1 className='text-center text-3xl my-5'>{t("our_products")}</h1>
       {/* Categories Dropdown */}
       <div className="w-full flex justify-center mb-8">
         <select

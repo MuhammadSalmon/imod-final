@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logoend from '../assets/logoend.png';
 import logo from '../assets/logo.png';
 import { useTranslation } from 'react-i18next';
-import ThemeCahnger from './ThemeChanger';
 
 const Header = ({handleChangeLanguage, language}) => {
   const location = useLocation();
@@ -58,9 +56,9 @@ const Header = ({handleChangeLanguage, language}) => {
       {isRootPage && !isSticky && (
         <div className="bg-white dark border-b hidden md:block">
           <div className="container mx-auto flex items-center justify-between py-4">
-            <a href="/" className="flex">
+            <Link to="/" className="flex">
               <img className="h-12 ml-8" src={logo} alt="ТГЕМ лого" />
-            </a>
+            </Link>
             <div className="hidden lg:flex space-x-10">
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-700">{t('phone')}</span>
@@ -89,19 +87,20 @@ const Header = ({handleChangeLanguage, language}) => {
 
       <div className={`container dark mx-auto px-4 py-4 flex items-center ${isSticky || !isRootPage ? 'justify-between' : 'justify-center'} ${isSticky ? 'pt-5' : ''}`}>
       {isSticky && (
-          <a href="/" className="hidden md:flex items-center">
+          <Link to="/" className="hidden md:flex items-center">
           <img className="h-8" src={logo} alt="IMOD лого" />
-        </a>
+        </Link>
         )}
         {!isRootPage && !isSticky && (
-          <a href="/" className="flex items-center">
+  <Link to="/" className="flex items-center hidden lg:flex">
+    <img className="h-8" src={logo} alt="ТГЕМ лого" />
+  </Link>
+)}
+
+        <div className="flex md:hidden  w-full items-center justify-between">
+        <Link to="/" className="flex items-center ">
             <img className="h-8" src={logo} alt="ТГЕМ лого" />
-          </a>
-        )}
-        <div className="flex md:hidden w-full items-center justify-between">
-        <a href="/" className="flex items-center">
-            <img className="h-8" src={logo} alt="ТГЕМ лого" />
-          </a>
+          </Link>
         <select
           value={language}
           onChange={handleChangeLanguage}
@@ -128,6 +127,10 @@ const Header = ({handleChangeLanguage, language}) => {
 
   <Link to="/products" className={`hover:text-blue-500 ${isActive('/products') ? 'bg-blue-100 rounded-md px-3 py-1' : ''}`}>
     {t('products')}
+  </Link>
+
+  <Link to="/services" className={`hover:text-blue-500 ${isActive('/services') ? 'bg-blue-100 rounded-md px-3 py-1' : ''}`}>
+    {t('Services')}
   </Link>
 
   <Link to="/vacancy" className={`hover:text-blue-500 ${isActive('/vacancy') ? 'bg-blue-100 rounded-md px-3 py-1' : ''}`}>
@@ -170,8 +173,12 @@ const Header = ({handleChangeLanguage, language}) => {
         </ul>
       </div>
     )}
+    
   </div>
   {/* Language Selector */}
+  <Link to="/contacts" className={`hover:text-blue-500 ${isActive('/contacts') ? 'bg-blue-100 rounded-md px-3 py-1' : ''}`}>
+    {t('contacts')}
+  </Link>
   <select
     value={language}
     onChange={handleChangeLanguage}
@@ -205,7 +212,7 @@ const Header = ({handleChangeLanguage, language}) => {
             </li>
             <li>
               <Link to="/gallery" className={`hover:text-blue-500 ${isActive('/gallery') ? 'bg-blue-100 px-3 py-1 rounded-md' : ''}`} onClick={toggleMobileMenu}>
-              {t('galery')}
+              {t('gallery')}
               </Link>
             </li>
             <li>
@@ -214,11 +221,20 @@ const Header = ({handleChangeLanguage, language}) => {
               </Link>
             </li>
             <li>
+            <Link to="/services" className={`hover:text-blue-500 ${isActive('/services') ? 'bg-blue-100 rounded-md px-3 py-1' : ''}`}>
+    {t('Services')}
+  </Link>
+            </li>
+            <li>
               <Link to="/vacancy" className={`hover:text-blue-500 ${isActive('/vacancy') ? 'bg-blue-100 px-3 py-1 rounded-md' : ''}`} onClick={toggleMobileMenu}>
               {t('vacancies')}
               </Link>
             </li>
-            
+            <li>
+            <Link to="/contacts" className={`hover:text-blue-500 ${isActive('/contacts') ? 'bg-blue-100 rounded-md px-3 py-1' : ''}`}>
+    {t('contacts')}
+  </Link>
+            </li>
           </ul>
         </nav>
       )}

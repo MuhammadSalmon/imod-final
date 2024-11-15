@@ -3,29 +3,32 @@ import product from '../assets/product.svg';
 import worker from '../assets/worker.svg';
 import clients from '../assets/clients.svg';
 import img from '../assets/stats.jpg';
+import { useTranslation } from 'react-i18next';
 
 // Sample statistics data
-const statisticsData = [
-  {
-    icon: clients,
-    title: 'Наши клиенты',
-    value: 300,
-  },
-  {
-    icon: product,
-    title: 'Наши продукты',
-    value: 50,
-  },
-  {
-    icon: worker,
-    title: 'Число сотрудников',
-    value: 500,
-  },
-];
+
 
 const Statistics = () => {
   const numberRefs = useRef([]);
+  const { i18n, t } = useTranslation();
 
+  const statisticsData = [
+    {
+      icon: clients,
+      title: t('our_clients'),
+      value: 150,
+    },
+    {
+      icon: product,
+      title: t('our_products'),
+      value: 50,
+    },
+    {
+      icon: worker,
+      title: t('worker'),
+      value: 500,
+    },
+  ];
   useEffect(() => {
     const animateNumber = (el, endValue) => {
       const duration = 6000; // 3 seconds
@@ -75,7 +78,7 @@ const Statistics = () => {
       <div className="container relative z-10 mx-auto text-center">
         <h2 className="text-3xl font-bold text-white mb-4 relative inline-block">
           <span className="absolute -left-20 right-full border-b-2 border-white top-1/2 transform -translate-y-1/2 w-20"></span>
-          Статистика
+          {t('statistic')}
           <span className="absolute right-0 left-full border-b-2 border-white top-1/2 transform -translate-y-1/2 w-20"></span>
         </h2>
 
