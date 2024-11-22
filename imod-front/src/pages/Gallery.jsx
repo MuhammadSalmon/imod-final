@@ -1,22 +1,8 @@
-import React, { useState } from "react";
-import img from "../assets/img1.jpg";
-import img2 from "../assets/img2.jpg";
-import img3 from "../assets/img3.jpg";
-import img4 from "../assets/news2_1.jpg";
-import img5 from "../assets/news2_2.jpg";
-import img6 from "../assets/news2_3.jpg";
+import  { useState } from "react";
 import LoadingSpinner from "../components/Spinner"; // Import your loading spinner
+import { useFetchGallery } from "../api";
 
-const photos = [
-  { src: img, alt: "Image 1" },
-  { src: img2, alt: "Image 2" },
-  { src: img3, alt: "Image 3" },
-  { src: img2, alt: "Image 4" },
-  { src: img4, alt: "Image 5" },
-  { src: img5, alt: "Image 6" },
-  { src: img6, alt: "Image 7" },
-  { src: img, alt: "Image 8" },
-];
+
 
 const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +12,14 @@ const Gallery = () => {
   const [flexValue, setFlexValue] = useState("w-full");
   const [activeButton, setActiveButton] = useState(1); // Active button state
 
+  const {
+    data: photos = [],
+    isLoading,
+    error,
+  } = useFetchGallery();
+  if (isLoading) return <LoadingSpinner />;
+    if (error) return <div className="text-center text-red-600">{('failed_to_load_data')}</div>;
+ 
   const openModal = (index) => {
     setCurrentIndex(index);
     setIsOpen(true);
@@ -88,7 +82,7 @@ const Gallery = () => {
               : "bg-blue-950 text-white"
           }`}
         >
-          4
+          3
         </button>
       </div>
 
@@ -101,8 +95,8 @@ const Gallery = () => {
             onClick={() => openModal(index)}
           >
             <img
-              src={photo.src}
-              alt={photo.alt}
+              src={photo.image}
+              alt="Not loaded image"
               className="w-full h-auto rounded shadow-lg cursor-pointer hover:opacity-75 transition-opacity"
               onLoad={() => setLoading(false)}
               onError={() => setLoading(false)}

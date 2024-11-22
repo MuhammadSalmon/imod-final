@@ -1,4 +1,3 @@
-import React from 'react';
 import Slider from 'react-slick';
 // import logo1 from '../assets/tgem.png';
 import logo2 from '../assets/rogun.png';
@@ -41,7 +40,7 @@ const Partners = () => {
     ],
   };
 
-  const { i18n, t } = useTranslation();
+  const {  t } = useTranslation();
 
 
   return (

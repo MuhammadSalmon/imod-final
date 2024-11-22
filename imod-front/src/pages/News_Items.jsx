@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 
+import AnimatedLink from '../components/Button';
 const NewsItem = ({ news }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg  transform hover:-translate-y-2 hover:scale-105 transition-transform duration-500 ease-in-out">
+    <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transform hover:-translate-y-2 hover:scale-105 transition-transform duration-500 ease-in-out flex flex-col">
+      {/* Image Section */}
       <div className="overflow-hidden rounded-t-lg">
         <img
           src={news.imageUrl}
@@ -12,16 +12,16 @@ const NewsItem = ({ news }) => {
         />
       </div>
 
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold text-gray-800 mb-2">{news.title}</h2>
-        <Link to={`/news/${news.id}`}>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transform transition-transform duration-300 hover:scale-110">
-            Read More
-          </button>
-        </Link>
+      {/* Title and Link */}
+      <div className="flex flex-col flex-grow justify-between mt-4">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">{news.title}</h2>
+        <div className="mt-auto">
+          <AnimatedLink link={`/news/${news.id}`} />
+        </div>
       </div>
     </div>
   );
 };
+
 
 export default NewsItem;

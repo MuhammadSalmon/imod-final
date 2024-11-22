@@ -1,11 +1,15 @@
 from rest_framework import serializers
-from .models import Category, Product, News, Vacancy, Image, ImageProduct
+from .models import Category, Product, News, Vacancy, Image, ImageProduct, ContactFormSubmission, Gallery, Services
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'name_en','name_ru','name_tg']
 
+class ContactFormSubmissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactFormSubmission
+        fields = ['first_name', 'email', 'phone_number', 'query'] 
 class ImageProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageProduct
@@ -44,3 +48,14 @@ class VacancySerializer(serializers.ModelSerializer):
         if Vacancy.objects.filter(title=value).exists():
             raise serializers.ValidationError("Vacancy with this title already exists.")
         return value
+
+class ServicesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Services
+        fields = '__all__'
+
+
+class GallerySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gallery
+        fields = '__all__'

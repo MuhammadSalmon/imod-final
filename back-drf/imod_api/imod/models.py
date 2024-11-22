@@ -51,5 +51,22 @@ class Vacancy(models.Model):
     def __str__(self):
         return self.title
 
+class ContactFormSubmission(models.Model):
+    first_name = models.CharField(max_length=100, verbose_name="First Name")
+    email = models.EmailField(verbose_name="Email")
+    phone_number = models.CharField(max_length=15, verbose_name="Phone Number")
+    query = models.TextField(verbose_name="Query")
+    submitted_at = models.DateTimeField(auto_now_add=True, verbose_name="Submitted At")
 
-# class Statistic(models.Model):
+    def __str__(self):
+        return f"Contact Form Submission from {self.first_name} ({self.email})"
+    
+    
+
+class Services(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    image = models.ImageField(upload_to='services/', null=False, blank=False)
+
+class Gallery(models.Model):
+    image = models.ImageField(upload_to='gallery', null=False, blank=False)

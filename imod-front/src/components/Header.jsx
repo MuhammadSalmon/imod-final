@@ -10,7 +10,7 @@ const Header = ({handleChangeLanguage, language}) => {
   const [isSticky, setIsSticky] = useState(false);
   const dropdownRef = useRef(null);
 
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
 
 
   const toggleMobileMenu = () => {
@@ -130,7 +130,7 @@ const Header = ({handleChangeLanguage, language}) => {
   </Link>
 
   <Link to="/services" className={`hover:text-blue-500 ${isActive('/services') ? 'bg-blue-100 rounded-md px-3 py-1' : ''}`}>
-    {t('Services')}
+    {t('services')}
   </Link>
 
   <Link to="/vacancy" className={`hover:text-blue-500 ${isActive('/vacancy') ? 'bg-blue-100 rounded-md px-3 py-1' : ''}`}>
@@ -222,7 +222,7 @@ const Header = ({handleChangeLanguage, language}) => {
             </li>
             <li>
             <Link to="/services" className={`hover:text-blue-500 ${isActive('/services') ? 'bg-blue-100 rounded-md px-3 py-1' : ''}`}>
-    {t('Services')}
+    {t('services')}
   </Link>
             </li>
             <li>
