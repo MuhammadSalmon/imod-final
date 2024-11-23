@@ -70,3 +70,5 @@ class Services(models.Model):
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery', null=False, blank=False)
+class Partners(models.Model):
+    image = models.ImageField(upload_to='gallery', null=False, blank=False)

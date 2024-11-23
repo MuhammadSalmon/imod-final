@@ -51,7 +51,7 @@ const ContactUs = () => {
           className="bg-white shadow-md rounded-lg p-8 max-w-lg w-full mx-auto lg:mx-0"
           onSubmit={handleSubmit}
         >
-          <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('h1_contact')}</h2>
+          <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('contact_us')}</h2>
           <p className="text-center text-gray-600 mb-8">
           <a href="tel:+9922381111" className="text-blue-600 hover:underline">
                   {t("phone")}: (+992) 4411116666
@@ -83,7 +83,7 @@ const ContactUs = () => {
               type="email"
               id="email"
               name="email"
-              placeholder="Please enter email..."
+              placeholder="email@gmail.com"
               value={formData.email}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"

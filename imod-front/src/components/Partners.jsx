@@ -1,23 +1,25 @@
 import Slider from 'react-slick';
-// import logo1 from '../assets/tgem.png';
-import logo2 from '../assets/rogun.png';
-import logo3 from '../assets/koyo.png'
-import logo4 from '../assets/elza.jpg'
-import logo1 from '../assets/Hexing.jpg'
-import { useTranslation } from 'react-i18next';
 
-const partners = [
-  { id: 1, name: 'Partner 1', logo: logo1 },
-  { id: 2, name: 'Partner 2', logo: logo2 },
-  { id: 3, name: 'Partner 3', logo: logo3 },
-  { id: 4, name: 'Partner 4', logo: logo4 },
-];
+import { useTranslation } from 'react-i18next';
+import { useFetchPartners } from '../api';
+import LoadingSpinner from './Spinner';
+
+
 
 const Partners = () => {
+  const { i18n, t } = useTranslation();
+  const {
+    data: partners = [],
+    isLoading,
+    error,
+  } = useFetchPartners();
+  if (isLoading) return <LoadingSpinner />;
+    if (error) return <div className="text-center text-red-600">{('failed_to_load_data')}</div>;
+
   const settings = {
     infinite: true,
     autoplay: true,
-    speed: 2000,
+    speed:2500,
     autoplaySpeed: 2000,
     cssEase: "linear",
     slidesToShow: 4,
@@ -40,7 +42,7 @@ const Partners = () => {
     ],
   };
 
-  const {  t } = useTranslation();
+
 
 
   return (
@@ -52,8 +54,8 @@ const Partners = () => {
           {partners.map((partner) => (
             <div key={partner.id} className="p-2 md:p-4">
               <img
-                src={partner.logo}
-                alt={partner.name}
+                src={partner.image}
+                alt={"Partner"}
                 className="h-24 md:h-32 lg:h-30 w-auto object-contain mx-auto"
               />
             </div>

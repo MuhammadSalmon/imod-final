@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import { useFetchServices } from '../api';
 import LoadingSpinner from '../components/Spinner';
 const Services = () => {
+  const { t } = useTranslation();
  const {
   data: services = [],
   isLoading,
@@ -12,7 +14,7 @@ if (isLoading) return <LoadingSpinner />;
   return (
     <div className="min-h-screen">
       <h1 className="text-4xl font-bold text-center justify-center uppercase mt-8 relative ">
-        Our Services
+        {t("services")}
         <hr className="absolute bottom-[-0.5rem]  w-full h-1 bg-blue-800" />
       </h1>
       <div className="max-w-7xl mx-auto p-8 flex flex-wrap justify-around">

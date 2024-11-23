@@ -15,15 +15,15 @@ const Footer = () => {
            {t("footer_p1")}
           </p>
           <p className="text-sm mt-2 text-gray-400">
-            {t("footer_p2")}
+          {t("address_1")} {t("address_2")}
           </p>
-          <p className="text-sm mt-2 text-gray-400">{t("phone")}: +992 123 456 789</p>
-          <p className="text-sm mt-2 text-gray-400">Email: info@imod.tj</p>
+          <a href="tel:+992411005555" className="text-sm mt-2 text-gray-400">{t("phone")}: +992 41 100 5555</a> <br />
+          <a href='mailto:info@imod.tj' className="text-sm mt-2 text-gray-400">Email: info@imod.tj</a>
         </div>
 
         {/* Quick Links */}
         <div className="w-full md:w-1/3 text-center">
-          <h2 className="text-xl font-semibold">Быстрые ссылки</h2>
+          <h2 className="text-xl font-semibold">{t("imod")}</h2>
           <ul className="mt-4 space-y-2">
             <li>
               <Link to="/" className="text-gray-400 hover:text-white transition-colors">

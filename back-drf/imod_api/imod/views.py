@@ -1,7 +1,7 @@
 from rest_framework import viewsets, permissions
 from rest_framework.permissions import AllowAny
-from .models import Category, Product, News, Vacancy, Image, ContactFormSubmission, Services, Gallery
-from .serializers import CategorySerializer, ProductSerializer, NewsSerializer, VacancySerializer, ImageSerializer, ContactFormSubmissionSerializer, ServicesSerializer, GallerySerializer
+from .models import Category, Product, News, Vacancy, Image, ContactFormSubmission, Services, Gallery, Partners
+from .serializers import CategorySerializer, ProductSerializer, NewsSerializer,PartnerSerializer, VacancySerializer, ImageSerializer, ContactFormSubmissionSerializer, ServicesSerializer, GallerySerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
@@ -59,4 +59,9 @@ class ServicesViewSet(viewsets.ModelViewSet):
 class GalleryViewSet(viewsets.ModelViewSet):
     queryset = Gallery.objects.all()
     serializer_class = GallerySerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+class PartnerViewSet(viewsets.ModelViewSet):
+    queryset = Partners.objects.all()
+    serializer_class = PartnerSerializer
     permission_classes = [IsAdminOrReadOnly]

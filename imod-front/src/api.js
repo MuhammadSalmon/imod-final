@@ -207,3 +207,17 @@ export const useFetchGallery = () => {
     },
   });
 };
+
+export const useFetchPartners = () => {
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
+
+  return useQuery({
+    queryKey: ['partners', lang],
+    queryFn: async () => {
+      const response = await axios.get(`${API_URL}partners/`);
+      const data = response.data;
+      return data
+    },
+  });
+};

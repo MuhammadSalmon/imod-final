@@ -25,7 +25,6 @@
   "vacancy_h1": "Become a part of IMOD and develop it with us",
   "vacancy_p": "We are always looking for passionate individuals to join our diverse and talented team. Check out our current vacancies and find your next opportunity.",
   "about_the_company": "About the company",
-  "h1_contact": "Get in touch", 
   "contact_name": "Fullname",
   "history_1_p": "On October 31, the Founder of Peace and National Unity - the Leader of the Nation, the President of the Republic of Tajikistan dear Emomali Rahmon and the Chairman of the Majlisi Milli Majlisi Oli of the Republic of Tajikistan, the Chairman of the City of Dushanbe dear Rustami Emomali in the Sino district of the capital opened an enterprise for the production of electrical equipment 'Imod' of the Open Joint Stock Company 'Tajikgidroelektromontazh'. The enterprise was erected on the area of 7 hectares of land in accordance with modern norms and international standards, and the buildings under construction amount to 40 thousand square meters. After the construction of the enterprise, it became possible to provide permanent jobs for up to 850 local specialists.",
   "history_2_p":"30 percent of the employees are women housewives and girls living in the vicinity of the enterprise from Sinoe district. Most of the women here are engaged in technical work, such as installing electrical equipment. During the construction of the enterprise, more than 300 construction workers received jobs and decent salaries. The established enterprise will produce 36 types of products on 16 production lines, including smart electricity meters, complete boards of 0.4; 6 and 10 kV, augmented stations of 6/10 and 20 kV transformers, elevators, iron doorways, electric and solar water heaters, poles of high-voltage overhead lines, barrier walls of highways, circuit breakers, various iron supports for lighting of public gardens, double-barrel beams, processing of various structures will be carried out.",
@@ -45,6 +44,8 @@
   "submit_error": "Fill all inputs after that submit",
   "textarea_contact": "Your request",
   "find_us": "Find us here",
-  "all": "All"
-
+  "all": "All",
+  "contact_us": "Contact us",
+  "address_1": "street.  Arbobhotun, Chorteppa Jamoat",
+  "address_2": "Dushanbe, Tajikistan"
 }

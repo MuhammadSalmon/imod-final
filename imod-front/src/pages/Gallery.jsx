@@ -135,7 +135,7 @@ const Gallery = () => {
             }`}
           >
             <img
-              src={photos[currentIndex].src}
+              src={photos[currentIndex].image}
               alt={photos[currentIndex].alt}
               className="w-full h-auto max-h-screen object-contain rounded-lg shadow-lg"
             />

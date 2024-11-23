@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Product, News, Vacancy, Image, ImageProduct, ContactFormSubmission, Gallery, Services
+from .models import Category, Product, News, Vacancy, Image, ImageProduct, ContactFormSubmission, Gallery, Services, Partners
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -58,4 +58,9 @@ class ServicesSerializer(serializers.ModelSerializer):
 class GallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = Gallery
+        fields = '__all__'
+
+class PartnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Partners
         fields = '__all__'

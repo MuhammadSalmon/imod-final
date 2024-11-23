@@ -62,8 +62,8 @@ const Header = ({handleChangeLanguage, language}) => {
             <div className="hidden lg:flex space-x-10">
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-700">{t('phone')}</span>
-                <a href="tel:+9922381111" className="text-blue-600 hover:underline">
-                  (+992) 4411116666
+                <a href="tel:+992411005555" className="text-blue-600 hover:underline">
+                  (+992) 411005555
                 </a>
               </div>
               <div className="border-l-2 border-gray-300 pl-4 flex flex-col">
@@ -71,9 +71,9 @@ const Header = ({handleChangeLanguage, language}) => {
                 <span className="text-black font-medium">08:00 - 18:00</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-semibold text-gray-700">ул. Н. Хувайдуллоева 377/1</span>
+                <span className="font-semibold text-gray-700">{t("address_1")}</span>
                 <a href="/contacts/our_contacts" className="text-blue-600 hover:underline">
-                  734060 г. Душанбе
+                {t("address_2")}
                 </a>
               </div>
              
