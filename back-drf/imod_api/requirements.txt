@@ -1,7 +1,7 @@
 django==5.1.2
-djangorestframework==3.14.0  # replace with the version you're using
-djangorestframework-simplejwt==5.2.2  # replace with the version you're using
-django-modeltranslation==0.17.4  # replace with the version you're using
-django-admin-interface==0.18.1  # replace with the version you're using
-django-cors-headers==4.1.0  # replace with the version you're using
-django-colorfield==0.8.4  # replace with the version you're using
+djangorestframework==3.14.0  
+djangorestframework-simplejwt==5.2.2 
+django-modeltranslation==0.17.4  
+django-admin-interface==0.18.1 
+django-cors-headers==4.1.0
+django-colorfield==0.8.4
