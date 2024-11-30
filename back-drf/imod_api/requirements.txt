@@ -4,4 +4,4 @@ djangorestframework-simplejwt==5.2.2  # replace with the version you're using
 django-modeltranslation==0.17.4  # replace with the version you're using
 django-admin-interface==0.18.1  # replace with the version you're using
 django-cors-headers==4.1.0  # replace with the version you're using
-colorfield==0.8.4  # replace with the version you're using
+django-colorfield==0.8.4  # replace with the version you're using
