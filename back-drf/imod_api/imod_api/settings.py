@@ -159,3 +159,6 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'Range',
 ]
 
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False

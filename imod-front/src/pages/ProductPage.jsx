@@ -5,7 +5,6 @@ import { useFetchCategoryId, useFetchProductId } from "../api";
 import ImageSlider from '../components/ImageSlider/ImageSlider'
 
 
-
 const ProductItemPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -31,9 +30,9 @@ console.log(product)
       {/* Back to Product List Button */}
       <button
         onClick={() => navigate(-1)} // Navigate back to the previous page
-        className="text-blue-500 hover:underline mb-4"
+        className="text-blue-500 hover:underline text-3xl mb-4"
       >
-        &larr; {t("Back to Product List")}
+        &larr; 
       </button>
 
       {/* Title */}

@@ -1,4 +1,4 @@
-Django==5.1.2
+django==5.1.2
 djangorestframework==3.14.0  # replace with the version you're using
 djangorestframework-simplejwt==5.2.2  # replace with the version you're using
 django-modeltranslation==0.17.4  # replace with the version you're using

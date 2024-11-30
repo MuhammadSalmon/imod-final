@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import LoadingSpinner from '../components/Spinner';
 import { useFetchNewsId } from '../api';
+import BacktoButton from '../components/BackTo';
+import { useTranslation } from "react-i18next";
 
 const NewsDetails = () => {
   const { id } = useParams();
@@ -11,6 +13,7 @@ const NewsDetails = () => {
   const [animateModal, setAnimateModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const {t} = useTranslation();
   const openModal = (index) => {
     setCurrentIndex(index);
     setIsOpen(true);
@@ -50,7 +53,10 @@ const NewsDetails = () => {
         className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] bg-cover bg-center"
         style={{ backgroundImage: `url(${newsItem.images[0]?.image})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+       
+        <div className="absolute inset-0 bg-black bg-opacity-50">
+        <BacktoButton text={t("news")} />
+        </div>
       </div>
 
       {/* Title and Description */}
@@ -60,6 +66,11 @@ const NewsDetails = () => {
           {new Date(newsItem.custom_date).toLocaleDateString()}
         </p>
         <p className="text-sm sm:text-base md:text-lg text-justify text-gray-700">{newsItem.content}</p>
+      </div>
+
+      {/* Back to List Button */}
+      <div className="text-center my-4">
+        
       </div>
 
       {/* Image Grid */}

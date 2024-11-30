@@ -1,5 +1,7 @@
 import React from 'react';
 import img from '../assets/img2.jpg';
+import img1 from '../assets/about_background.png';
+
 import AnimatedLink from './Button';
 import { useTranslation } from 'react-i18next';
 const AboutSection = () => {
@@ -12,7 +14,7 @@ const AboutSection = () => {
       <div
         className="home__about-text w-full sm:h-auto lg:w-1/2 bg-cover bg-center p-6 md:p-8 lg:p-12 md:h-full"
         style={{
-          backgroundImage: `url('https://tgem.su/img/archive/home-pattern.png')`,
+          backgroundImage: `url(${img1})`,
         }}
       >
         <h2 className="title--styled title--styled-left text-lg md:text-xl lg:text-2xl font-bold mb-4 relative pl-10">

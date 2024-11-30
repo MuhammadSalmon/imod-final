@@ -163,7 +163,6 @@ export const useFetchNewsId = (id) => {
     queryFn: async () => {
       const response = await axios.get(`${API_URL}news/${id}/`);
       const data = response.data;
-      console.log(data);
       return {
         ...data,
         title: getTranslatedField(data, 'title', lang),

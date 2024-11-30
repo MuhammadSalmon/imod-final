@@ -34,7 +34,6 @@ const ProductPage = () => {
     error: productsError,
   } = useFetchProducts();
 
-  console.log(products);
 
   // Filter products based on selected category ID
   const filteredProducts = selectedCategory === 0

@@ -8,8 +8,10 @@ import './i18n';
 import Home from './pages/Home'
 import HistoryPage from './pages/History'
 import Gallery from './pages/Gallery';
+import NotFoundPage from './pages/NotFondPage';
 import Services from './pages/Services';
 const ContactPage = lazy(() => import('./pages/Contacts'));
+
 const ProductPage = lazy(() => import('./pages/Products'));
 const NewsPage = lazy(() => import('./pages/News'));
 const ProductItemPage = lazy(() => import('./pages/ProductPage'));
@@ -43,6 +45,7 @@ function App() {
             <Route path="/products/:id" element={<ProductItemPage />} />
             <Route path="/vacancy" element={<VacancyPage />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AppLayout>
       </Router>
